@@ -1,8 +1,9 @@
 import React from 'react';
-import {render, screen} from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
 import Navbar from './Navbar.component';
 
 describe('<Navbar />', ()=>{
+    const mockHandler = jest.fn();
     test('Render Navbar component', ()=>{
         render(<Navbar />)
     });

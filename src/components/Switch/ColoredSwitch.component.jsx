@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
 const ColoredSwitch = (props)=>{
   const classes = useStyles();
 
-  const {switchColor, label, checkedColor}=props;
-  const [checked, setChecked]=useState(false);
+  const {switchColor, label, checkedColor ,toggleSwitch, checked}=props;
+
    const CustomSwitch = withStyles({
         switchBase: {
           color: switchColor,
@@ -28,14 +28,11 @@ const ColoredSwitch = (props)=>{
         track: {},
     })(Switch);
 
-  const handleChange = () => {
-    setChecked(!checked);
-  };
   return(
     <FormGroup >
       <FormControlLabel
         control={
-          <CustomSwitch checked={checked} onChange={handleChange} name='customSwitch' />
+          <CustomSwitch checked={checked} onChange={toggleSwitch} name='customSwitch' />
         }
         label={label}
         classes={{

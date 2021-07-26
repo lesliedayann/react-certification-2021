@@ -82,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
 const Navbar=()=> {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [darkMode, setDarkMode]= useState(false);
   const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event) => {
@@ -91,7 +92,9 @@ const Navbar=()=> {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-
+  const handleSwitch=()=>{
+    setDarkMode(!darkMode);
+  };
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -141,6 +144,8 @@ const Navbar=()=> {
               switchColor={"white"}
               label={"Dark Mode"}
               checkedColor={"#b0a2da"}
+              toggleSwitch={handleSwitch}
+              checked={darkMode}
             />
             <IconButton
               edge="end"
