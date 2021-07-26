@@ -10,7 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-import Switch from '../Switch/ColoredSwitch.component'
+import Switch from '../Switch'
 
 
 const useStyles = makeStyles((theme) => ({

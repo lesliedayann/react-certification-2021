@@ -5,7 +5,7 @@ import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import Navbar from '../Navabar/Navbar.component';
+import Navbar from '../Navabar';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
 
