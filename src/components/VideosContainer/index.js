@@ -1,1 +1,1 @@
-export {default} from './VideosContainer.component'; 
+export { default } from './VideosContainer.component';
