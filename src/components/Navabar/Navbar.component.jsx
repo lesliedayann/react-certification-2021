@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,18 +10,17 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-
-import Switch from '../Switch'
-
+import { AppContext } from '../../utils/AppContext';
+import Switch from '../Switch';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
-  space:{
+  space: {
     flexGrow: 1,
   },
-  colorPrimary:{
+  colorPrimary: {
     color: '#fff',
     backgroundColor: '#1C5476',
   },
@@ -78,38 +78,51 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-const Navbar=()=> {
+const Navbar = () => {
   const classes = useStyles();
+  const history = useHistory();
+  const { search, setSearch } = useContext(AppContext);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [darkMode, setDarkMode]= useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const [inputValue, setInputValue] = useState(search);
   const isMenuOpen = Boolean(anchorEl);
 
+  const reloadPage = () => {
+    history.push('/');
+  };
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-  const handleSwitch=()=>{
+  const handleSwitch = () => {
     setDarkMode(!darkMode);
   };
+  const handleSearchInput = (e) => {
+    setInputValue(e.target.value);
+  };
+  const handleInputKeyPress = (e) => {
+    if (e.charCode === 13) {
+      setSearch(inputValue);
+      reloadPage();
+    }
+  };
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Iniciar sesion</MenuItem>
     </Menu>
   );
-
 
   return (
     <div className={classes.grow}>
@@ -123,7 +136,7 @@ const Navbar=()=> {
           >
             <MenuIcon />
           </IconButton>
-          
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -134,16 +147,19 @@ const Navbar=()=> {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-              inputProps={{ "aria-label": "search" }}
+              inputProps={{ 'aria-label': 'search' }}
+              onChange={handleSearchInput}
+              value={inputValue}
+              onKeyPress={handleInputKeyPress}
             />
           </div>
           <div className={classes.space} />
 
           <div className={classes.sectionDesktop}>
             <Switch
-              switchColor={"white"}
-              label={"Dark Mode"}
-              checkedColor={"#b0a2da"}
+              switchColor="white"
+              label="Dark Mode"
+              checkedColor="#b0a2da"
               toggleSwitch={handleSwitch}
               checked={darkMode}
             />
@@ -155,15 +171,13 @@ const Navbar=()=> {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle fontSize="large"/>
+              <AccountCircle fontSize="large" />
             </IconButton>
           </div>
-         
         </Toolbar>
       </AppBar>
-
       {renderMenu}
     </div>
   );
-}
+};
 export default Navbar;
