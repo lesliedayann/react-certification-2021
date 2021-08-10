@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { AppContext } from '../../utils/AppContext';
+import { useFetchVideos } from '../../utils/hooks/useYouTube';
 import VideoCard from '../VideoCard';
 
 const StyleWrapper = styled.div`
@@ -23,15 +23,17 @@ const StyleWrapper = styled.div`
   @media (min-width: 1200px) {
     max-width: 1135px;
   }
+  @media (min-width: 1300px) {
+    max-width: 1250px;
+  }
 `;
 
 const VideosContainer = () => {
-  const { videosData } = useContext(AppContext);
-
+  const { videos } = useFetchVideos();
   return (
     <StyleWrapper>
-      {videosData.items &&
-        videosData.items.map((video) => (
+      {videos &&
+        videos.map((video) => (
           <VideoCard
             imageURL={video.snippet.thumbnails.high.url}
             title={video.snippet.title}
