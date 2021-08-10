@@ -81,9 +81,9 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
   const classes = useStyles();
   const history = useHistory();
-  const { search, setSearch } = useContext(AppContext);
+  const { search, setSearch, darkMode, setDarkMode } = useContext(AppContext);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
   const [inputValue, setInputValue] = useState(search);
   const isMenuOpen = Boolean(anchorEl);
 

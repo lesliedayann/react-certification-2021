@@ -10,20 +10,18 @@ describe('<ColoredSwitch />', () => {
     switchColor: 'white',
     label: 'Dark Mode',
   };
-  let wrapper;
   beforeEach(() => {
-    wrapper = render(<ColoredSwitch {...props} />);
+    render(<ColoredSwitch {...props} />);
   });
   test('Render ColoredSwitch component', () => {
-    expect(wrapper).not.toBeNull();
+    expect(screen).not.toBeNull();
   });
-  test('renders by Dark Mode', () => {
+  test('Render the dark mode text', () => {
     const darkMode = screen.getByText(/Dark Mode/i);
     expect(darkMode).toBeInTheDocument();
   });
   test('Render after click', () => {
-    const { getByRole } = wrapper;
-    const button = getByRole('checkbox');
+    const button = screen.getByRole('checkbox');
     fireEvent.click(button);
     expect(mockHandler).toHaveBeenCalledTimes(1);
   });
