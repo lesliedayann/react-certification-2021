@@ -1,10 +1,15 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { AppProvider } from '../../utils/AppContext.provider';
 import Navbar from './Navbar.component';
 
 describe('<Navbar />', () => {
   beforeEach(() => {
-    render(<Navbar />);
+    render(
+      <AppProvider>
+        <Navbar />
+      </AppProvider>
+    );
   });
 
   test('Render the search input', () => {

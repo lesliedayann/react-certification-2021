@@ -42,10 +42,10 @@ Object {
                 />
               </button>
               <div
-                class="makeStyles-search-6"
+                class="makeStyles-search-8"
               >
                 <div
-                  class="makeStyles-searchIcon-7"
+                  class="makeStyles-searchIcon-9"
                 >
                   <svg
                     aria-hidden="true"
@@ -59,11 +59,11 @@ Object {
                   </svg>
                 </div>
                 <div
-                  class="MuiInputBase-root makeStyles-inputRoot-8"
+                  class="MuiInputBase-root makeStyles-inputRoot-10"
                 >
                   <input
                     aria-label="search"
-                    class="MuiInputBase-input makeStyles-inputInput-9"
+                    class="MuiInputBase-input makeStyles-inputInput-11"
                     placeholder="Search…"
                     type="text"
                     value="wizeline"
@@ -74,7 +74,7 @@ Object {
                 class="makeStyles-space-2"
               />
               <div
-                class="makeStyles-sectionDesktop-10"
+                class="makeStyles-sectionDesktop-12"
               >
                 <div
                   class="MuiFormGroup-root"
@@ -87,13 +87,13 @@ Object {
                     >
                       <span
                         aria-disabled="false"
-                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-15 MuiSwitch-switchBase WithStyles(ForwardRef(Switch))-switchBase-12 MuiSwitch-colorSecondary"
+                        class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-17 MuiSwitch-switchBase WithStyles(ForwardRef(Switch))-switchBase-14 MuiSwitch-colorSecondary"
                       >
                         <span
                           class="MuiIconButton-label"
                         >
                           <input
-                            class="PrivateSwitchBase-input-18 MuiSwitch-input"
+                            class="PrivateSwitchBase-input-20 MuiSwitch-input"
                             id="customSwitch"
                             name="customSwitch"
                             type="checkbox"
@@ -108,11 +108,11 @@ Object {
                         />
                       </span>
                       <span
-                        class="MuiSwitch-track WithStyles(ForwardRef(Switch))-track-14"
+                        class="MuiSwitch-track WithStyles(ForwardRef(Switch))-track-16"
                       />
                     </span>
                     <span
-                      class="MuiTypography-root MuiFormControlLabel-label makeStyles-label-11 MuiTypography-body1"
+                      class="MuiTypography-root MuiFormControlLabel-label makeStyles-label-13 MuiTypography-body1"
                     >
                       Dark Mode
                     </span>
@@ -154,8 +154,33 @@ Object {
           <h1>
             Welcome to the Challenge!
           </h1>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                style="color: white;"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                />
+              </svg>
+               borrar
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
           <div
-            class="sc-gtsrHT kcycNY"
+            class="sc-gtsrHT eEDBzA"
           />
         </section>
       </main>
@@ -183,11 +208,11 @@ Object {
         >
           <li
             aria-disabled="false"
-            class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
+            class="MuiButtonBase-root MuiListItem-root MuiMenuItem-root makeStyles-userMenu-6 MuiMenuItem-gutters MuiListItem-gutters MuiListItem-button"
             role="menuitem"
             tabindex="0"
           >
-            Iniciar sesion
+            Login
             <span
               class="MuiTouchRipple-root"
             />
@@ -238,10 +263,10 @@ Object {
               />
             </button>
             <div
-              class="makeStyles-search-6"
+              class="makeStyles-search-8"
             >
               <div
-                class="makeStyles-searchIcon-7"
+                class="makeStyles-searchIcon-9"
               >
                 <svg
                   aria-hidden="true"
@@ -255,11 +280,11 @@ Object {
                 </svg>
               </div>
               <div
-                class="MuiInputBase-root makeStyles-inputRoot-8"
+                class="MuiInputBase-root makeStyles-inputRoot-10"
               >
                 <input
                   aria-label="search"
-                  class="MuiInputBase-input makeStyles-inputInput-9"
+                  class="MuiInputBase-input makeStyles-inputInput-11"
                   placeholder="Search…"
                   type="text"
                   value="wizeline"
@@ -270,7 +295,7 @@ Object {
               class="makeStyles-space-2"
             />
             <div
-              class="makeStyles-sectionDesktop-10"
+              class="makeStyles-sectionDesktop-12"
             >
               <div
                 class="MuiFormGroup-root"
@@ -283,13 +308,13 @@ Object {
                   >
                     <span
                       aria-disabled="false"
-                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-15 MuiSwitch-switchBase WithStyles(ForwardRef(Switch))-switchBase-12 MuiSwitch-colorSecondary"
+                      class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-17 MuiSwitch-switchBase WithStyles(ForwardRef(Switch))-switchBase-14 MuiSwitch-colorSecondary"
                     >
                       <span
                         class="MuiIconButton-label"
                       >
                         <input
-                          class="PrivateSwitchBase-input-18 MuiSwitch-input"
+                          class="PrivateSwitchBase-input-20 MuiSwitch-input"
                           id="customSwitch"
                           name="customSwitch"
                           type="checkbox"
@@ -304,11 +329,11 @@ Object {
                       />
                     </span>
                     <span
-                      class="MuiSwitch-track WithStyles(ForwardRef(Switch))-track-14"
+                      class="MuiSwitch-track WithStyles(ForwardRef(Switch))-track-16"
                     />
                   </span>
                   <span
-                    class="MuiTypography-root MuiFormControlLabel-label makeStyles-label-11 MuiTypography-body1"
+                    class="MuiTypography-root MuiFormControlLabel-label makeStyles-label-13 MuiTypography-body1"
                   >
                     Dark Mode
                   </span>
@@ -350,8 +375,33 @@ Object {
         <h1>
           Welcome to the Challenge!
         </h1>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              style="color: white;"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              />
+            </svg>
+             borrar
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
         <div
-          class="sc-gtsrHT kcycNY"
+          class="sc-gtsrHT eEDBzA"
         />
       </section>
     </main>

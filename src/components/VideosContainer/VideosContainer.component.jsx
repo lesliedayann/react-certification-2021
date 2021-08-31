@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { useFetchVideos } from '../../utils/hooks/useYouTube';
 import VideoCard from '../VideoCard';
 
 const StyleWrapper = styled.div`
@@ -22,26 +22,41 @@ const StyleWrapper = styled.div`
   }
   @media (min-width: 1200px) {
     max-width: 1135px;
+    display: grid;
+    grid-template-columns: auto auto auto;
   }
   @media (min-width: 1300px) {
     max-width: 1250px;
   }
 `;
 
-const VideosContainer = () => {
-  const { videos } = useFetchVideos();
+const VideosContainer = (props) => {
+  const { videos } = props;
+
+  const filteredVideos = videos.items.filter(
+    (video) => video.id.kind === 'youtube#video'
+  );
   return (
     <StyleWrapper>
-      {videos &&
-        videos.map((video) => (
+      {filteredVideos.map((video) => (
+        <Link
+          to={{
+            pathname: `/video/${video.id.videoId}`,
+            state: {
+              videoTitle: video.snippet.title,
+              videoDescription: video.snippet.description,
+              image: video.snippet.thumbnails.high.url,
+            },
+          }}
+          key={video.id.videoId}
+        >
           <VideoCard
             imageURL={video.snippet.thumbnails.high.url}
             title={video.snippet.title}
             description={video.snippet.description}
-            key={video.id.videoId}
-            videoId={video.id.videoId}
           />
-        ))}
+        </Link>
+      ))}
     </StyleWrapper>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import Video from './Video.page';
+import Video from './VideoDetails.page';
 
 describe('<Video />', () => {
   global.window = { location: { pathname: 'nmXMgqjQzls' } };
