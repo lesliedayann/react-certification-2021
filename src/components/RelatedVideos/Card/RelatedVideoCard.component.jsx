@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { AppContext } from '../../../utils/AppContext';
+import { AppContext } from '../../../utils/AppContext.provider';
 
 const StyleWrapper = styled.div`
   display: flex;
@@ -34,24 +33,23 @@ const StyleWrapper = styled.div`
 `;
 
 const RelatedVideoCard = (props) => {
-  const { darkMode } = useContext(AppContext);
-  const { imageURL, title, videoId } = props;
+  const { state } = useContext(AppContext);
+  const { darkMode } = state;
+
+  const { imageURL, title } = props;
   return (
-    <Link to={`/video/${videoId}`}>
-      <StyleWrapper className={darkMode && 'card-dark'}>
-        <img className="video-related-card-image" src={imageURL} alt={title} />
-        <div className="video-related-card-title">
-          <h3>{title}</h3>
-        </div>
-      </StyleWrapper>
-    </Link>
+    <StyleWrapper className={darkMode && 'card-dark'}>
+      <img className="video-related-card-image" src={imageURL} alt={title} />
+      <div className="video-related-card-title">
+        <h3>{title}</h3>
+      </div>
+    </StyleWrapper>
   );
 };
 
 RelatedVideoCard.propTypes = {
   imageURL: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  videoId: PropTypes.string.isRequired,
 };
 
 export default RelatedVideoCard;

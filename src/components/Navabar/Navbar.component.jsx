@@ -1,90 +1,32 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Divider from '@material-ui/core/Divider';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import { AppContext } from '../../utils/AppContext';
+import { AppContext } from '../../utils/AppContext.provider';
+import LoginModal from '../Modals/Login/Login.modal';
 import Switch from '../Switch';
+import { useStyles } from './Navbar.styled';
 
-const useStyles = makeStyles((theme) => ({
-  grow: {
-    flexGrow: 1,
-  },
-  space: {
-    flexGrow: 1,
-  },
-  colorPrimary: {
-    color: '#fff',
-    backgroundColor: '#1C5476',
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    height: '1em',
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
-  sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-  },
-}));
 const Navbar = () => {
   const classes = useStyles();
   const history = useHistory();
-  const { search, setSearch, darkMode, setDarkMode } = useContext(AppContext);
+  const { state, setSearch, setDarkMode, removeSessionData } = useContext(AppContext);
+  const { search, darkMode, logged, sessionData } = state;
   const [anchorEl, setAnchorEl] = useState(null);
-  // const [darkMode, setDarkMode] = useState(false);
   const [inputValue, setInputValue] = useState(search);
+  const [openModal, setOpenModal] = useState(false);
   const isMenuOpen = Boolean(anchorEl);
 
   const reloadPage = () => {
@@ -93,11 +35,28 @@ const Navbar = () => {
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleClickOpen = () => {
+    setOpenModal(true);
+  };
+  const handleClose = () => {
+    setOpenModal(false);
+  };
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+  const handleSession = () => {
+    handleClickOpen();
+    setAnchorEl(null);
+  };
+  const handleLogout = () => {
+    removeSessionData();
+    setAnchorEl(null);
+  };
+  const handleGoToFavVideos = () => {
+    history.push('/favorites');
+  };
   const handleSwitch = () => {
-    setDarkMode(!darkMode);
+    setDarkMode();
   };
   const handleSearchInput = (e) => {
     setInputValue(e.target.value);
@@ -120,7 +79,39 @@ const Navbar = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Iniciar sesion</MenuItem>
+      {logged ? (
+        <div>
+          <MenuItem classes={{ root: classes.userMenu }}>
+            <ListItemIcon>
+              <AccountCircle fontSize="small" />
+              <ListItemText
+                primary={sessionData.username}
+                classes={{ root: classes.menuItemText }}
+              />
+            </ListItemIcon>
+          </MenuItem>
+          <MenuItem classes={{ root: classes.userMenu }} onClick={handleGoToFavVideos}>
+            <ListItemIcon>
+              <FavoriteIcon fontSize="small" />
+              <ListItemText
+                primary="Favorite Videos"
+                classes={{ root: classes.menuItemText }}
+              />
+            </ListItemIcon>
+          </MenuItem>
+          <Divider />
+          <MenuItem classes={{ root: classes.userMenu }} onClick={handleLogout}>
+            <ListItemIcon>
+              <ExitToAppIcon fontSize="small" />
+              <ListItemText primary="Logout" classes={{ root: classes.menuItemText }} />
+            </ListItemIcon>
+          </MenuItem>
+        </div>
+      ) : (
+        <MenuItem classes={{ root: classes.userMenu }} onClick={handleSession}>
+          Login
+        </MenuItem>
+      )}
     </Menu>
   );
 
@@ -176,6 +167,7 @@ const Navbar = () => {
           </div>
         </Toolbar>
       </AppBar>
+      <LoginModal open={openModal} handleClose={handleClose} />
       {renderMenu}
     </div>
   );

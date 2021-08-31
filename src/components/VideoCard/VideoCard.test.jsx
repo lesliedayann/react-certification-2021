@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 import VideoCard from './VideoCard.component';
+import { AppContext } from '../../utils/AppContext.provider';
 
 describe('<VideoCard />', () => {
   const correctProps = {
@@ -9,13 +9,12 @@ describe('<VideoCard />', () => {
       'https://yt3.ggpht.com/ytc/AAUvwnighSReQlmHl_S_vSfvnWBAG5Cw4A0YxtE0tm5OpQ=s800-c-k-c0xffffffff-no-rj-mo',
     title: 'this is a little title',
     description: 'this is a description',
-    videoId: 'nmXMgqjQzls',
   };
   beforeEach(() => {
     render(
-      <BrowserRouter>
+      <AppContext>
         <VideoCard {...correctProps} />
-      </BrowserRouter>
+      </AppContext>
     );
   });
 

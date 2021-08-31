@@ -1,11 +1,11 @@
-// import React, { useRef } from 'react';
 import React, { useLayoutEffect, useContext, useRef } from 'react';
 import { random } from '../../utils/fns';
-import { AppContext } from '../../utils/AppContext';
+import { AppContext } from '../../utils/AppContext.provider';
 import './Layout.styles.css';
 
 function Layout({ children }) {
-  const { darkMode } = useContext(AppContext);
+  const { state } = useContext(AppContext);
+  const { darkMode } = state;
   const mainPage = useRef();
 
   useLayoutEffect(() => {

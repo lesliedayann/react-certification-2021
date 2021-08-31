@@ -1,24 +1,34 @@
 import React from 'react';
-import { useFetchVideos } from '../../utils/hooks/useYouTube';
+import { Link } from 'react-router-dom';
 import RelatedVideoCard from './Card';
 
 const RelatedVideo = (props) => {
-  const { currentVideoId } = props;
-  const { videos } = useFetchVideos();
+  const { currentVideoId, videos, path } = props;
+
+  const filteredVideos = videos.items.filter(
+    (video) => video.id.kind === 'youtube#video' && currentVideoId !== video.id.videoId
+  );
+
   return (
     <div>
-      {videos &&
-        videos.map(
-          (video) =>
-            currentVideoId !== video.id.videoId && (
-              <RelatedVideoCard
-                imageURL={video.snippet.thumbnails.high.url}
-                title={video.snippet.title}
-                videoId={video.id.videoId}
-                key={video.id.videoId}
-              />
-            )
-        )}
+      {filteredVideos.map((video) => (
+        <Link
+          to={{
+            pathname: `/${path}/${video.id.videoId}`,
+            state: {
+              videoTitle: video.snippet.title,
+              videoDescription: video.snippet.description,
+              image: video.snippet.thumbnails.high.url,
+            },
+          }}
+          key={video.id.videoId}
+        >
+          <RelatedVideoCard
+            imageURL={video.snippet.thumbnails.high.url}
+            title={video.snippet.title}
+          />
+        </Link>
+      ))}
     </div>
   );
 };

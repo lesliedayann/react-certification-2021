@@ -1,18 +1,19 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import PrivateRoute from '../Routes/Private/PrivateRoute.component';
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import NotFound from '../../pages/NotFound';
-import Video from '../../pages/VideoTemplate/Video.page';
+import VideoDetails from '../../pages/VideoDetails';
+import FavoriteVideos from '../../pages/VideoTemplate/Favorite';
+import FavoriteVideoDetails from '../../pages/VideoDetails/Favorite/FavoriteVideoDetailes.page';
 import Navbar from '../Navabar';
 import Layout from '../Layout';
-import { AppContext, useAppContextValue } from '../../utils/AppContext';
+import { AppProvider } from '../../utils/AppContext.provider';
 
 function App() {
-  const appContextValue = useAppContextValue();
-
   return (
-    <AppContext.Provider value={appContextValue}>
+    <AppProvider>
       <BrowserRouter>
         <AuthProvider>
           <Layout>
@@ -21,7 +22,9 @@ function App() {
               <Route exact path="/">
                 <HomePage />
               </Route>
-              <Route path="/video/:id" component={Video} />
+              <Route path="/video/:id" component={VideoDetails} />
+              <PrivateRoute path="/favorites" component={FavoriteVideos} exact />
+              <PrivateRoute path="/favorite/:id" component={FavoriteVideoDetails} />
               <Route path="*">
                 <NotFound />
               </Route>
@@ -29,7 +32,7 @@ function App() {
           </Layout>
         </AuthProvider>
       </BrowserRouter>
-    </AppContext.Provider>
+    </AppProvider>
   );
 }
 
