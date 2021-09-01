@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { AppProvider } from '../../utils/AppContext.provider';
-import Home from './Home.page';
+import NotFound from './NotFound.page';
 
 describe('<Home />', () => {
   let wrapper;
@@ -10,7 +10,7 @@ describe('<Home />', () => {
     wrapper = render(
       <AppProvider>
         <BrowserRouter>
-          <Home />
+          <NotFound />
         </BrowserRouter>
       </AppProvider>
     );
@@ -19,8 +19,8 @@ describe('<Home />', () => {
   test('Render Home Page', () => {
     expect(wrapper).not.toBeNull();
   });
-  test('Render Home Page Title', () => {
-    const title = screen.getByText(/Welcome to/i);
-    expect(title).toBeInTheDocument();
+  test('Testing component image', () => {
+    const thumbnail = screen.getByRole('img');
+    expect(thumbnail).toHaveAttribute('alt', 'page not found');
   });
 });

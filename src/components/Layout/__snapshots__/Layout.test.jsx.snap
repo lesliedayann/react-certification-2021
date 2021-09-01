@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Layout /> main container should be rendered correctly 1`] = `
+<main
+  className="container main-page-styled background-light"
+>
+  <p>
+    This is a child
+  </p>
+</main>
+`;

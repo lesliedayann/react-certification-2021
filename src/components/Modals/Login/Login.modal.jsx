@@ -62,7 +62,7 @@ const LoginModal = (props) => {
         <Button onClick={handleLocalClose} color="primary">
           Cancel
         </Button>
-        <Button onClick={handleSubmitSession} color="primary">
+        <Button onClick={handleSubmitSession} color="primary" data-testid="login-btn">
           Login
         </Button>
       </DialogActions>

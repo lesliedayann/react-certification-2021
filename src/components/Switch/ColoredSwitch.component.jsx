@@ -38,6 +38,7 @@ const ColoredSwitch = (props) => {
             onChange={toggleSwitch}
             name="customSwitch"
             id="customSwitch"
+            value={checked}
           />
         }
         label={label}
