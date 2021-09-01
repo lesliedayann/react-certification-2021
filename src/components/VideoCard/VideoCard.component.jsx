@@ -31,7 +31,12 @@ const VideoCard = (props) => {
   return (
     <StyleWrapper>
       <Card className={`card-wrapper ${state.darkMode && 'card-dark'}`}>
-        <CardMedia className="card-media" image={imageURL} title={title} />
+        <CardMedia
+          className="card-media"
+          image={imageURL}
+          title={title}
+          data-testid="videoCard-image"
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {title}

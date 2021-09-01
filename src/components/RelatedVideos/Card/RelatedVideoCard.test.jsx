@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 import RelatedVideoCard from './RelatedVideoCard.component';
-import { AppContext } from '../../../utils/AppContext.provider';
+import { AppProvider } from '../../../utils/AppContext.provider';
 
 describe('<RelatedVideoCard />', () => {
   const props = {
@@ -12,9 +11,9 @@ describe('<RelatedVideoCard />', () => {
   };
   beforeEach(() => {
     render(
-      <AppContext>
+      <AppProvider>
         <RelatedVideoCard {...props} />
-      </AppContext>
+      </AppProvider>
     );
   });
 

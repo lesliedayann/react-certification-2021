@@ -161,6 +161,7 @@ const Navbar = () => {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
+              data-testid="account-login-menu"
             >
               <AccountCircle fontSize="large" />
             </IconButton>
