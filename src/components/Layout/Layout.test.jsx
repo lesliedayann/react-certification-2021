@@ -1,17 +1,19 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Layout from './Layout.component';
 import { AppProvider, AppContext } from '../../utils/AppContext.provider';
 
 describe('<Layout />', () => {
-  const wrapper = mount(
-    <AppProvider>
-      <Layout>
-        <p>This is a child</p>
-      </Layout>
-    </AppProvider>
-  );
-
+  let wrapper;
+  beforeEach(() => {
+    wrapper = render(
+      <AppProvider>
+        <Layout>
+          <p>This is a child</p>
+        </Layout>
+      </AppProvider>
+    );
+  });
   test('main container should be rendered correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -21,20 +23,23 @@ describe('<Layout />', () => {
   });
 
   test('Render children', () => {
-    expect(wrapper.find('p').exists()).toBe(true);
+    const title = screen.getByText('This is a child');
+    expect(title).toBeInTheDocument();
   });
   test('Render background-light', () => {
-    expect(wrapper.find('.background-light').exists()).toBe(true);
+    const mainElement = screen.queryByRole('main');
+    expect(mainElement.classList.contains('background-light')).toBe(true);
   });
 
   test('Render background-dark, darkMode: true', () => {
-    const layoutMain = mount(
+    const { container } = render(
       <AppContext.Provider value={{ state: { darkMode: true } }}>
         <Layout>
-          <p>This is a child</p>
+          <p>This is a child element</p>
         </Layout>
       </AppContext.Provider>
     );
-    expect(layoutMain.find('.background-dark').exists()).toBe(true);
+    const mainElement = container.getElementsByClassName('background-dark');
+    expect(mainElement.length).toBe(1);
   });
 });
