@@ -1,29 +1,72 @@
---------------------------------|----------|----------|----------|----------|-------------------|
-File                            |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
---------------------------------|----------|----------|----------|----------|-------------------|
-All files                       |    69.81 |    27.27 |       50 |    69.23 |                   |
- components/App                 |       75 |      100 |       75 |       75 |                   |
-  App.component.jsx             |       75 |      100 |       75 |       75 |          21,22,23 |
- components/Layout              |      100 |      100 |      100 |      100 |                   |
-  Layout.component.jsx          |      100 |      100 |      100 |      100 |                   |
- components/Navabar             |    70.37 |        0 |       25 |    69.23 |                   |
-  Navbar.component.jsx          |    70.37 |        0 |       25 |    69.23 |... 03,106,107,108 |
-  index.js                      |        0 |        0 |        0 |        0 |                   |
- components/Switch              |      100 |      100 |      100 |      100 |                   |
-  ColoredSwitch.component.jsx   |      100 |      100 |      100 |      100 |                   |
-  index.js                      |        0 |        0 |        0 |        0 |                   |
- components/VideoCard           |      100 |      100 |      100 |      100 |                   |
-  VideoCard.component.jsx       |      100 |      100 |      100 |      100 |                   |
-  index.js                      |        0 |        0 |        0 |        0 |                   |
- components/VideosContainer     |       80 |       50 |       50 |       80 |                   |
-  VideosContainer.component.jsx |       80 |       50 |       50 |       80 |                35 |
-  index.js                      |        0 |        0 |        0 |        0 |                   |
- pages/Home                     |      100 |      100 |      100 |      100 |                   |
-  Home.page.jsx                 |      100 |      100 |      100 |      100 |                   |
- pages/VideoTemplate            |       90 |       50 |    66.67 |       90 |                   |
-  Video.page.jsx                |       90 |       50 |    66.67 |       90 |                32 |
- utils                          |    69.23 |      100 |    33.33 |    69.23 |                   |
-  AppContext.js                 |    69.23 |      100 |    33.33 |    69.23 |       14,17,22,25 |
- utils/hooks                    |     37.5 |        0 |    33.33 |     37.5 |                   |
-  useYouTube.js                 |     37.5 |        0 |    33.33 |     37.5 |... 34,35,37,38,42 |
---------------------------------|----------|----------|----------|----------|-------------------|
+-----------------------------------|----------|----------|----------|----------|-------------------|
+File                               |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+-----------------------------------|----------|----------|----------|----------|-------------------|
+All files                          |    73.51 |    56.14 |    67.53 |    74.43 |                   |
+ src                               |        0 |      100 |      100 |        0 |                   |
+  index.js                         |        0 |      100 |      100 |        0 |                 7 |
+ src/components/App                |      100 |      100 |      100 |      100 |                   |
+  App.component.jsx                |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/Layout             |      100 |      100 |      100 |      100 |                   |
+  Layout.component.jsx             |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/Modals/Login       |    71.43 |       50 |    57.14 |    71.43 |                   |
+  Login.modal.jsx                  |    71.43 |       50 |    57.14 |    71.43 | 23,24,26,27,28,31 |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/Navabar            |    85.37 |       50 |    69.23 |       85 |                   |
+  Navbar.component.jsx             |    84.62 |       50 |    66.67 |    84.62 | 33,42,45,66,67,68 |
+  Navbar.styled.jsx                |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/RelatedVideos      |      100 |      100 |      100 |      100 |                   |
+  RelatedVideo.component.jsx       |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/RelatedVideos/Card |      100 |      100 |      100 |      100 |                   |
+  RelatedVideoCard.component.jsx   |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/Routes/Private     |      100 |       50 |      100 |      100 |                   |
+  PrivateRoute.component.jsx       |      100 |       50 |      100 |      100 |                12 |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/Switch             |      100 |      100 |      100 |      100 |                   |
+  ColoredSwitch.component.jsx      |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/Video/Details      |      100 |      100 |      100 |      100 |                   |
+  Details.component.jsx            |      100 |      100 |      100 |      100 |                   |
+  Details.styles.jsx               |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/VideoCard          |      100 |      100 |      100 |      100 |                   |
+  VideoCard.component.jsx          |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/components/VideosContainer    |      100 |      100 |      100 |      100 |                   |
+  VideosContainer.component.jsx    |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/pages/Home                    |      100 |      100 |      100 |      100 |                   |
+  Home.page.jsx                    |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/pages/NotFound                |      100 |      100 |      100 |      100 |                   |
+  NotFound.page.jsx                |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/pages/VideoDetails            |      100 |      100 |      100 |      100 |                   |
+  VideoDetails.page.jsx            |      100 |      100 |      100 |      100 |                   |
+  VideoDetails.styles.jsx          |      100 |      100 |      100 |      100 |                   |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/pages/VideoDetails/Favorite   |      100 |       75 |      100 |      100 |                   |
+  FavoriteVideoDetails.page.jsx    |      100 |       75 |      100 |      100 |                24 |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/pages/VideoTemplate/Favorite  |      100 |       50 |      100 |      100 |                   |
+  FavoriteVideos.page.jsx          |      100 |       50 |      100 |      100 |                49 |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/providers/Auth                |    52.94 |        0 |       40 |    52.94 |                   |
+  Auth.provider.jsx                |    52.94 |        0 |       40 |    52.94 |... 13,27,28,32,33 |
+  index.js                         |        0 |        0 |        0 |        0 |                   |
+ src/utils                         |    39.39 |        0 |    44.44 |    39.39 |                   |
+  AppContext.provider.jsx          |       25 |        0 |    16.67 |       25 |... 50,56,65,74,75 |
+  constants.js                     |      100 |      100 |      100 |      100 |                   |
+  fns.js                           |      100 |      100 |      100 |      100 |                   |
+  storage.js                       |    71.43 |      100 |      100 |    71.43 |               7,8 |
+ src/utils/apis                    |     53.7 |    28.57 |    35.71 |       58 |                   |
+  YouTube.api.js                   |      100 |      100 |      100 |      100 |                   |
+  favoriteVideos.api.js            |    66.67 |       50 |       40 |       75 | 10,11,12,28,29,35 |
+  login.api.js                     |    38.46 |     12.5 |    33.33 |       40 |... 36,38,39,40,42 |
+ src/utils/hooks                   |    76.19 |      100 |    85.71 |    76.19 |                   |
+  useYouTube.js                    |       80 |      100 |      100 |       80 |             16,18 |
+-----------------------------------|----------|----------|----------|----------|-------------------|
