@@ -21,6 +21,6 @@ describe('<Home />', () => {
   });
   test('Testing component image', () => {
     const thumbnail = screen.getByRole('img');
-    expect(thumbnail).toHaveAttribute('alt', 'page not found');
+    expect(thumbnail).toHaveAccessibleName('page not found');
   });
 });

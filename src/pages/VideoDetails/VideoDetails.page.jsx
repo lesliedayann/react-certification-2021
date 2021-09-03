@@ -46,7 +46,7 @@ const Video = () => {
   }, [id, sessionData.username, state.logged]);
 
   return (
-    <StyleWrapper className={darkMode && 'bg-dark'}>
+    <StyleWrapper className={darkMode && 'bg-dark'} data-testid="videoDetails-page">
       <div className="page--container">
         <section className="videoDetailsContainer">
           <VideoDetailsCard id={id} title={videoTitle} description={videoDescription}>
@@ -77,7 +77,7 @@ const Video = () => {
             )}
           </VideoDetailsCard>
         </section>
-        <aside>
+        <aside data-testid="relatedVideos">
           <RelatedVideo
             currentVideoId={id}
             videos={useFetchVideos(search)}

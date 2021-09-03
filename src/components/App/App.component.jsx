@@ -6,7 +6,7 @@ import HomePage from '../../pages/Home';
 import NotFound from '../../pages/NotFound';
 import VideoDetails from '../../pages/VideoDetails';
 import FavoriteVideos from '../../pages/VideoTemplate/Favorite';
-import FavoriteVideoDetails from '../../pages/VideoDetails/Favorite/FavoriteVideoDetailes.page';
+import FavoriteVideoDetails from '../../pages/VideoDetails/Favorite/FavoriteVideoDetails.page';
 import Navbar from '../Navabar';
 import Layout from '../Layout';
 import { AppProvider } from '../../utils/AppContext.provider';

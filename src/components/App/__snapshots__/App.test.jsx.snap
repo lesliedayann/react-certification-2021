@@ -164,7 +164,7 @@ Object {
     <div
       aria-hidden="true"
       class="MuiPopover-root"
-      id="primary-search-account-menu"
+      data-testid="primary-search-account-menu"
       role="presentation"
       style="position: fixed; z-index: 1300; right: 0px; bottom: 0px; top: 0px; left: 0px; visibility: hidden;"
     >

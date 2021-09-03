@@ -38,7 +38,7 @@ const RelatedVideoCard = (props) => {
 
   const { imageURL, title } = props;
   return (
-    <StyleWrapper className={darkMode && 'card-dark'}>
+    <StyleWrapper className={darkMode && 'card-dark'} data-testid="relatedVideoCard">
       <img className="video-related-card-image" src={imageURL} alt={title} />
       <div className="video-related-card-title">
         <h3>{title}</h3>

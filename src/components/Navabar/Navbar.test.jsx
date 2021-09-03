@@ -1,21 +1,29 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import { AppProvider, AppContext } from '../../utils/AppContext.provider';
 import Navbar from './Navbar.component';
 
 describe('<Navbar />', () => {
+  let wrapper;
   beforeEach(() => {
-    render(
+    wrapper = render(
       <AppProvider>
         <Navbar />
       </AppProvider>
     );
   });
+  test('main container should be rendered correctly', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 
   test('Render the search input', () => {
     const search = screen.getByPlaceholderText(/Search/i);
-    expect(search).toBeInTheDocument();
+    expect(search.value).toBe('wizeline');
+  });
+
+  test('Render Layout Component', () => {
+    expect(wrapper).not.toBeNull();
   });
 
   test('Input Value', () => {
@@ -44,7 +52,9 @@ describe('<Navbar />', () => {
     fireEvent.click(option);
     expect(option).toBeInTheDocument();
   });
+});
 
+describe('<Navbar /> logged ', () => {
   const state = {
     search: 'wizeline',
     sessionData: {
@@ -53,26 +63,51 @@ describe('<Navbar />', () => {
     },
     logged: true,
     videos: [],
-    darkMode: false,
+    darkMode: true,
   };
+  const setDarkMode = jest.fn();
+  const removeSessionData = jest.fn();
 
-  mount(
-    <AppContext.Provider value={{ state }}>
-      <Navbar />
-    </AppContext.Provider>
-  );
-
-  test('Render logout Menu, user is logged', () => {
+  beforeEach(() => {
+    cleanup();
+    render(
+      <AppContext.Provider value={{ state, setDarkMode, removeSessionData }}>
+        <BrowserRouter>
+          <Navbar />
+        </BrowserRouter>
+      </AppContext.Provider>
+    );
+  });
+  test('Render logout Menu', () => {
     const menuButton = screen.queryByTestId(/account-login-menu/i);
     fireEvent.click(menuButton);
     const option = screen.getByText(/Logout/i);
     expect(option).toBeInTheDocument();
   });
-
-  test('Render logout Menu, user is logged, show username', () => {
+  test('Render logout Menu, show username', () => {
     const menuButton = screen.queryByTestId(/account-login-menu/i);
     fireEvent.click(menuButton);
     const username = screen.getByText(state.sessionData.username);
     expect(username).toBeInTheDocument();
+  });
+  test('Render logout Menu, click Fav videos', () => {
+    const menuButton = screen.queryByTestId(/account-login-menu/i);
+    fireEvent.click(menuButton);
+    const favButton = screen.getByText('Favorite Videos');
+    fireEvent.click(favButton);
+    const menu = screen.getByTestId('primary-search-account-menu');
+    expect(menu).toBeInTheDocument();
+  });
+  test('Render the dark mode event', () => {
+    const button = screen.getByLabelText('Dark Mode');
+    fireEvent.click(button);
+    expect(setDarkMode).toHaveBeenCalledTimes(1);
+  });
+  test('Click logout option', () => {
+    const menuButton = screen.queryByTestId(/account-login-menu/i);
+    fireEvent.click(menuButton);
+    const option = screen.getByText(/Logout/i);
+    fireEvent.click(option);
+    expect(removeSessionData).toHaveBeenCalledTimes(1);
   });
 });

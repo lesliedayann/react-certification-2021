@@ -54,6 +54,7 @@ const Navbar = () => {
   };
   const handleGoToFavVideos = () => {
     history.push('/favorites');
+    setAnchorEl(null);
   };
   const handleSwitch = () => {
     setDarkMode();
@@ -73,7 +74,7 @@ const Navbar = () => {
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
+      data-testid={menuId}
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}

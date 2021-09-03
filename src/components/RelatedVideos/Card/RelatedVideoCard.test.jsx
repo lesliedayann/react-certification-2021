@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import RelatedVideoCard from './RelatedVideoCard.component';
-import { AppProvider } from '../../../utils/AppContext.provider';
+import { AppContext } from '../../../utils/AppContext.provider';
 
 describe('<RelatedVideoCard />', () => {
   const props = {
@@ -11,9 +11,9 @@ describe('<RelatedVideoCard />', () => {
   };
   beforeEach(() => {
     render(
-      <AppProvider>
+      <AppContext.Provider value={{ state: { darkMode: true } }}>
         <RelatedVideoCard {...props} />
-      </AppProvider>
+      </AppContext.Provider>
     );
   });
 
@@ -25,5 +25,9 @@ describe('<RelatedVideoCard />', () => {
   test('Testing component image', () => {
     const thumbnail = screen.getByRole('img');
     expect(thumbnail).toHaveAttribute('src', props.imageURL);
+  });
+
+  test('Testing component darkMode', () => {
+    expect(screen.getByTestId('relatedVideoCard')).toHaveClass('card-dark');
   });
 });

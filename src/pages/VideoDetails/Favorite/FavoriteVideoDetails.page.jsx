@@ -15,12 +15,12 @@ const FavoriteVideoDetails = () => {
   const { id } = useParams();
   const { videoTitle, videoDescription } = location.state;
   return (
-    <StyleWrapper className={darkMode && 'bg-dark'}>
+    <StyleWrapper className={darkMode && 'bg-dark'} data-testid="favVideoDetails-page">
       <div className="page--container">
         <section className="videoDetailsContainer">
           <VideoDetailsCard id={id} title={videoTitle} description={videoDescription} />
         </section>
-        <aside>
+        <aside data-testid="favRelatedVideos">
           {userVideosFavs.length > 0 && (
             <RelatedVideo
               currentVideoId={id}
